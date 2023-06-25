@@ -68,13 +68,12 @@ func setupServer(key string, shop string, hmac string, body string) (*httptest.R
 		return nil
 	}
 
-	// Start Echo.
+	// Start Echo?.
 	e := echo.New()
 
 	// Setup the recorder and request.
 	c := e.NewContext(req, rec)
 	h := WebhookVerify(key)(nh)
 	h(c)
-
 	return rec, ran
 }
